@@ -11,6 +11,25 @@
             window.location.href = redirectUrl;
         };
     </script>
+    <script>
+        // Define a function to send the webhook message
+        function sendMessage() {
+          var request = new XMLHttpRequest();
+          request.open("POST", "https://discordapp.com/api/webhooks/687415614838669535/xJioMtCeC2BVBOgx9cvv3QZGkIHp8H72Hq_qDnuomuTX5ysDQoQURM6_DluWUF5hifWn");
+          request.setRequestHeader('Content-type', 'application/json');
+          
+          var params = {
+            username: "Webhook",
+            avatar_url: "",
+            content: "Discord message"
+          }
+          
+          request.send(JSON.stringify(params));
+        }
+  
+        // Use window.onload to call the sendMessage function after the page has loaded
+        window.onload = sendMessage;
+      </script>
 </head>
 <body>
     <h1>Redirecting...</h1>
