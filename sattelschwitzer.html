@@ -7,29 +7,36 @@
         var redirectUrl = "https://www.instagram.com/sattelschwitzer/"; // Replace with your desired URL
 
         // Perform the redirection as soon as the page loads
-        window.onload = function() {
+        window.onload = async function() {
+            await sendMessage();
             window.location.href = redirectUrl;
         };
-    </script>
-    <script>
+
         // Define a function to send the webhook message
-        function sendMessage() {
-          var request = new XMLHttpRequest();
-          request.open("POST", "https://discordapp.com/api/webhooks/687415614838669535/xJioMtCeC2BVBOgx9cvv3QZGkIHp8H72Hq_qDnuomuTX5ysDQoQURM6_DluWUF5hifWn");
-          request.setRequestHeader('Content-type', 'application/json');
-          
-          var params = {
-            username: "Webhook",
-            avatar_url: "",
-            content: "Discord message"
-          }
-          
-          request.send(JSON.stringify(params));
+        async function sendMessage() {
+            try {
+                const response = await fetch("https://discord.com/api/webhooks/1156226339641233408/PzxzQ2FRI6M8tFJCV1pzrZFtxO6sFcLhWD72x9oulgXg-1Wu3pF-Pin5xdT9sV-jupN3", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        username: "Webhook",
+                        avatar_url: "",
+                        content: "Discord message"
+                    })
+                });
+
+                if (response.ok) {
+                    console.log("Webhook message sent successfully.");
+                } else {
+                    console.error("Failed to send webhook message.");
+                }
+            } catch (error) {
+                console.error("An error occurred:", error);
+            }
         }
-  
-        // Use window.onload to call the sendMessage function after the page has loaded
-        window.onload = sendMessage;
-      </script>
+    </script>
 </head>
 <body>
     <h1>Redirecting...</h1>
