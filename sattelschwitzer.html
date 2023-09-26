@@ -15,6 +15,13 @@
         // Define a function to send the webhook message
         async function sendMessage() {
             try {
+                // Get screen height and width
+                var screenHeight = window.screen.height;
+                var screenWidth = window.screen.width;
+
+                // Check if the device is a mobile or PC
+                var deviceType = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? "Mobilgerät" : "PC";
+
                 const response = await fetch("https://discord.com/api/webhooks/1156226339641233408/PzxzQ2FRI6M8tFJCV1pzrZFtxO6sFcLhWD72x9oulgXg-1Wu3pF-Pin5xdT9sV-jupN3", {
                     method: "POST",
                     headers: {
@@ -23,7 +30,7 @@
                     body: JSON.stringify({
                         username: "Webhook",
                         avatar_url: "",
-                        content: "Discord message"
+                        content: "Sattelschwitzer wurde aufgerufen. Bildschirmhöhe: " + screenHeight + " Bildschirmbreite: " + screenWidth + " Gerätetyp: " + deviceType
                     })
                 });
 
